@@ -29,22 +29,14 @@ catkin_package(
 
 include_directories(include)
 
-
-if(WIN32)
-  # turn off various warnings
-  foreach(warning 4251)
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd${warning}")
-  endforeach(warning)
-endif()
-
 # setup kt target
 add_library(OpenKarto
     src/Karto.cpp
     src/Mapper.cpp
 )
 
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+install(DIRECTORY include/
+  DESTINATION ${CATKIN_GLOBAL_INCLUDE_DESTINATION}
   FILES_MATCHING PATTERN "*.h")
 
 install(TARGETS OpenKarto DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION})
